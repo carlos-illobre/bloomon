@@ -72,14 +72,6 @@ Note: In case you want to show off and you haven't spent the 4 hours yet you can
 
 Our storage facility has a maximum capacity: the facility cannot store more than **256** _flowers_ at any given time. If the facility storage is full and the next _flower_ cannot be processed, the application should stop with an **exit** code of 1 and a corresponding error message.
 
-## Set up
-
-This project provides a scaffold that you may use to begin the challenge. Feel free to use the suggested files and code, but also feel at liberty to change anything as you see fit.
-
-The entry point can be found at src/index.js where an input/output interface has been provided using [Readline](https://nodejs.org/api/readline.html).
-
-In src/models, we've included some classes to serve as data structures to represent _bouquet specs_ and _flowers_. 
-
 ### Run from source
 
 Install dependencies `npm i` and run `npm start`.
@@ -87,12 +79,3 @@ Install dependencies `npm i` and run `npm start`.
 ### Test
 
 Run tests with `npm test`.
-
-### Lint
-
-Run linter with `npm run lint`.
-
-## Wrap up
-
-Are you done? Great!! Please let maria.gil@bloomon.nl know that you are ready, and she will help you with next steps. Thank you for participating in our code challenge!
-
