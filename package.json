@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node app",
-    "test": "eslint --fix . && NODE_ENV=test nyc --check-coverage --lines 100 --functions 100 --branches 100 mocha app/**/*.test.js",
-    "test:debug": "NODE_ENV=test mocha debug app/**/*.test.js",
-    "test:nolint": "NODE_ENV=test mocha app/**/*.test.js"
+    "test": "eslint --fix . && NODE_ENV=test nyc --check-coverage --lines 100 --functions 100 --branches 100 mocha app/*.test.js",
+    "test:debug": "NODE_ENV=test mocha debug app/*.test.js",
+    "test:nolint": "NODE_ENV=test mocha app/*.test.js"
   },
   "author": "",
   "license": "ISC",

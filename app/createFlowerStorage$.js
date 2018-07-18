@@ -1,14 +1,14 @@
 const { merge } = require('rxjs')
 const { map, scan, filter, first } = require('rxjs/operators')
 
-module.exports = ({ flower$, bouquet$, maxFlowers }) => {
+module.exports = ({ flower$, productionFacility$, maxFlowers }) => {
 
   const flowerCount$ = flower$.pipe(
     map(_ => 1)
   )
 
-  const bouquetFlowerCount$ = bouquet$.pipe(
-    map(bouquet => -bouquet.count())
+  const bouquetFlowerCount$ = productionFacility$.pipe(
+    map(bouquet => -bouquet.total())
   )
 
   return merge(flowerCount$, bouquetFlowerCount$).pipe(

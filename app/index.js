@@ -1,24 +1,17 @@
 const DEFAULT_MAX_FLOWERS = 256
 
-const { fromEvent } = require('rxjs')
+const line$ = require('./createLine$.js')
+const flower$ = require('./createFlower$.js')({ line$ })
+const bouquetSpecStore$ = require('./createBouquetSpecStore$.js')({ line$ })
+const productionFacility$ = require('./createProductionFacility$.js')({ bouquetSpecStore$, flower$ })
+const flowerStorage$ = require('./createFlowerStorage$.js')({
+  flower$,
+  productionFacility$,
+  DEFAULT_MAX_FLOWERS
+})
 
-const reader = require('readline')
-  .createInterface({
-    input: process.stdin
-  })
-
-reader.setPrompt('')
-process.stdin.setEncoding('utf8')
-
-const line$ = fromEvent(reader, 'line')
-const flower$ = require('./flower/createFlower$.js')({ line$ })
-const bouquetSpec$ = require('./bouquetSpec/createBouquetSpec$.js')({ line$ })
-const bouquetSpecStore$ = require('./bouquetSpecStore/createBouquetSpecStore$.js')({ bouquetSpec$ })
-const bouquet$ = require('./bouquet/createBouquet$.js')({ bouquetSpecStore$, flower$ })
-const flowerStorage$ = require('./flowerStorage/createFlowerStorage$.js')({ flower$, bouquet$, DEFAULT_MAX_FLOWERS })
-
-bouquet$
-  .subscribe(bouquet => console.log(bouquet.toString()))
+productionFacility$
+  .subscribe(bouquet => console.log(bouquet.getLine()))
 
 flowerStorage$
   .subscribe(message => {
